@@ -3,6 +3,7 @@
 using namespace std;
 void check0(int );
 void checkFail();
+void check1000(int ,int );
 
 class div0:public exception{
 	public:
@@ -18,6 +19,13 @@ class input_fail:public exception{
 	}
 };
 
+class range1000:public exception{
+	public:
+	virtual const char* what() const throw(){
+		return "Value out of range (-10000 to 1000)";
+	}
+};
+
 int main(){
 	int x,y;
 	double d;
@@ -28,9 +36,7 @@ do{
 		cout<<"Enter 2 num: ";
 		cin>>x>>y;
 		checkFail();
-		if (x < -10000 || x > 1000 || y < -10000 || y > 1000) {
-			throw "Value out of range (-10000 to 1000)";
-        }
+		check1000(x,y);
 		check0(y);
 		d=(double) x/y;
 		cout<< "The result is " <<d<<endl;
@@ -39,7 +45,7 @@ do{
 		double* myarray;
 		for(i=0;i<100000;i++){
 			cout<<"Allocating memory ...."<<i<<endl;
-			myarray= new double[50000000];
+			myarray= new double[5000000000];
 		}
 	}
 
@@ -65,4 +71,12 @@ void checkFail() {
 		cin.ignore(50,'\n');
         throw e;
     }
+}
+
+void check1000(int x,int y){
+	range1000 e;
+	if (x < -10000 || x > 1000 || y < -10000 || y > 1000) {
+			throw e;
+        }
+
 }
