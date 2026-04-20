@@ -3,7 +3,7 @@
 using namespace std;
 void check0(int );
 void checkFail();
-void check1000(int ,int );
+void check1000(int ,int);
 
 class div0:public exception{
 	public:
@@ -40,7 +40,7 @@ do{
 		check0(y);
 		d=(double) x/y;
 		cout<< "The result is " <<d<<endl;
-
+		a=0;
 		int i ;
 		double* myarray;
 		for(i=0;i<100000;i++){
@@ -51,9 +51,9 @@ do{
 
 	catch(exception& e){
 		cout<<e.what()<<endl;
-		a=0;
+		
 	}
-}while(!a);
+}while(a);
 	return 0;
 }
 
