@@ -11,7 +11,7 @@ do{
 	try{
 
 		int i ;
-		double myarray;
+		double* myarray;
 		for(i=0;i<100000;i++){
 			cout<<"Allocating memory ...."<<i<<endl;
 			myarray= new double[50000000];
@@ -42,13 +42,16 @@ do{
 		cin.clear();
 		cin.ignore(50,'\n');
 	}
+	catch(exception &e){
+		cout<<e.what()<<endl;
+		a=0;
+	}
 }while(a);
 	return 0;
 }
 
 void check0(int x){
 	if(x==0){
-		int a=0;
 		throw(x);
 	}
 }
