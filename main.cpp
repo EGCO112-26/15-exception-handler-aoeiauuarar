@@ -47,7 +47,7 @@ do{
 		cout<<e.what()<<endl;
 		a=0;
 	}
-}while(a);
+}while(!a);
 	return 0;
 }
 
